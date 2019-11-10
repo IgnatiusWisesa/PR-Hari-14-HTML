@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Program Kuadrat</title>
+    <style>
+        th,
+        td,
+        table {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <h2 style="background-color:blanchedalmond">Program Kuadrat</h2>
+    <h3>Masukkan Angka 1: &nbsp;&nbsp;
+        <input type="number" placeholder="x" id="angka1" style="text-align: center;"></h3>
+    <h3>Masukkan Angka 2: &nbsp;&nbsp;
+            <input type="number" placeholder="y" id="angka2" style="text-align: center;"></h3>
+    <button onclick="olah()">Kuadratkan</button>
+    <br><br>
+    <table>
+        <tr>
+            <th>Awal</th>
+            <th>Hasil</th>
+        </tr>
+        <tr>
+            <td id="awal">X & Y</td>
+            <td id="hasil">X<sup>y</sup></td>
+        </tr>
+    </table>
+    </h3>
+</body>
+<script>
+olah = function(){
+    AngkaAwal = document.getElementById('angka1').value
+    pangkat = document.getElementById('angka2').value
+    Akhir = Math.pow(AngkaAwal,pangkat)
+
+    document.getElementById('awal').innerHTML = AngkaAwal
+    document.getElementById('hasil').innerHTML = Akhir
+    document.getElementById('angka2').value = ''
+    document.getElementById('angka1').value = ''
+}
+</script>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daftar User</title>
+    <style>
+        th,
+        td,
+        table {
+            border: 1px solid brown;
+            border-collapse: collapse;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h2 style="background-color: blanchedalmond;">Daftar User</h2>
+        <br><br>
+        <table>
+            <tr>
+            <input type="text" id="nama" placeholder="Masukkan nama Anda" style="text-align: center; width: 200px;">
+            </tr>
+        <br><br>
+            <tr>
+            <input type="number" id="usia" placeholder="Usia Anda" style="text-align: center; width: 200px;">
+            </tr>
+        <br><br>
+            <tr>
+            <input type="radio" name="sex" value="pria">Pria
+            <input type="radio" name="sex" value="wanita">Wanita
+            </tr>
+        <br><br>
+            <tr>
+            <input type="text" id="pekerjaan" placeholder="Masukkan pekerjaan Anda" style="text-align: center; width: 200px;">
+            </tr>
+        <br><br>
+            <tr>
+                <button id="submit" onclick="print()">SUBMIT</button>
+            </tr>
+        <br><br>
+            <h3>Sort Berdasarkan</h3>
+            <tr>
+                <td><button onclick="sortnama()">Nama</button></td>
+                <td><button onclick="sortusia()">Umur</button></td>
+                <td><button onclick="sortgender()">Gender</button></td>
+                <td><button onclick="sortpekerjaan()">Pekerjaan</button></td>
+            </tr>
+        </table>
+
+            <h2>List User Terdaftar</h2>
+        <table>
+            <thead style="background-color: burlywood;">
+                <th>No</th>
+                <th>Nama</th>
+                <th>Usia</th>
+                <th>Gender</th>
+                <th>Pekerjaan</th>
+            </thead>
+            <tbody id="tampil">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </center>
+</body>
+    <script>
+        class Orang{
+            constructor(nama, usia, gender, pekerjaan){
+                this.nama = nama
+                this.usia = usia
+                this.gender = gender
+                this.pekerjaan = pekerjaan
+            }
+        }
+        
+        arrayorang =[]
+        print = function(){
+ 
+            nama = document.getElementById('nama').value
+            nama = nama.toUpperCase()
+            usia = document.getElementById('usia').value
+            laki = document.getElementsByName('sex')[0].checked
+            if(laki==true){
+                gender = 'Pria'
+            }
+            else{
+                gender = 'Wanita'
+            }
+            pekerjaan = document.getElementById('pekerjaan').value
+            pekerjaan = pekerjaan.toUpperCase()
+
+            arrayorang.push(new Orang(nama,usia,gender,pekerjaan))
+
+            if(document.getElementById('nama').value ==''){
+                // console.log('ni masuk!!')
+                arrayorang.pop()
+            }
+
+            output = ''
+            for(i=0;i<arrayorang.length;i++){
+                output = output +`              <tr>
+                                                    <td>${i+1}</td>
+                                                    <td>${arrayorang[i].nama}</td>
+                                                    <td>${arrayorang[i].usia}</td>
+                                                    <td>${arrayorang[i].gender}</td>
+                                                    <td>${arrayorang[i].pekerjaan}</td>
+                                                </tr>`
+            // console.log(output)
+            }
+
+            nama = document.getElementById('nama').value =''
+            usia = document.getElementById('usia').value =''
+            laki = document.getElementsByName('sex')[0].checked =false
+            pekerjaan = document.getElementById('pekerjaan').value=''
+            
+            document.getElementById('tampil').innerHTML = output
+        }
+
+
+        sortnama = function(){
+            arrayorang.sort(function(x,y){
+                if (x.nama < y.nama){return -1}
+                if (x.nama > y.nama){return 1}
+                return 0
+            })
+        print()
+        }
+
+        sortusia = function(){
+            arrayorang.sort(function(x,y){
+                if (x.usia < y.usia){return -1}
+                if (x.usia > y.usia){return 1}
+                return 0
+            })
+        print()
+        }
+
+        sortgender = function(){
+            arrayorang.sort(function(x,y){
+                if (x.gender < y.gender){return -1}
+                if (x.gender > y.gender){return 1}
+                return 0
+            })
+        print()
+        }
+
+        sortpekerjaan = function(){
+            arrayorang.sort(function(x,y){
+                if (x.pekerjaan < y.pekerjaan){return -1}
+                if (x.pekerjaan > y.pekerjaan){return 1}
+                return 0
+            })
+        print()
+        }
+    </script>
+
+
+</html>

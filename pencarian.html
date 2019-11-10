@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pencarian Huruf</title>
+</head>
+<body>
+    <br>
+    <h2 style="background-color: blanchedalmond;">Program Pencarian Karakter</h2>
+    <h3>Masukkan Kalimat:</h3>
+    <input type="text" id="kalimat" style="background-color: greenyellow; text-align: center; width: 420px;" placeholder="kalimat">
+    <h3>Karakter yang Anda Cari:
+        <input id="karakter" type="text" style="background-color: greenyellow; text-align: center; width: 200px;" placeholder="karakter"></h3>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button onclick="pencarian()">Cari!</button>
+    <h3 id="hasil" style="background-color: burlywood;"></h3>
+</body>
+<script>
+    pencarian = function(){
+        kalimat = document.getElementById('kalimat').value
+        kalimat = kalimat.toUpperCase().split('')
+
+        karakter = document.getElementById('karakter').value
+        karakter = karakter.toUpperCase()
+
+        penghitung = 0
+        for(i=0;i<kalimat.length;i++){
+            if(karakter==kalimat[i]){
+                penghitung++
+            }
+        }
+
+        document.getElementById('hasil').innerHTML = `Karakter '${karakter}' ada sebanyak
+                                                    ${penghitung}.`
+    }
+</script>
+</html>

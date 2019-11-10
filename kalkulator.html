@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kalkulator Sederhana</title>
+    <style>
+    th, table{
+        border: 2px solid black;
+        border-collapse: collapse;
+        padding: 10px
+    }
+    </style>
+</head>
+<body>
+    <center>
+        <h1 style="background-color: burlywood;">Kalkulator Sederhana</h1>
+        <br>
+        <h3>Masukkan Angka 1:
+            <input type="number" id="x" placeholder="x" style="text-align: center;"></h3>
+        <h3>Masukkan Angka 2:
+            <input type="number" id="y" placeholder="y" style="text-align: center;"></h3>
+        <p>
+            <button onclick="kali()">Kali xXy</button>
+            <button onclick="bagi()">Bagi x÷y</button>
+            <button onclick="tambah()">Tambah x+y</button>
+            <button onclick="kurang()">Kurang x-y</button>
+        </p>
+        <p>
+            <button onclick="mod()">Modulus x%y</button>
+            <button onclick="pangkat()">Pangkat x<sup>y</sup></button>
+        </p>
+        <table>
+            <th id="hasil">Hasil</th>
+        </table>
+        <br>
+        <button onclick="bersihkan()">A/C</button>
+    </center>
+</body>
+    <script>
+    kali = function (){
+        x = document.getElementById('x').value
+        y = document.getElementById('y').value
+        document.getElementById('hasil').innerHTML = x*y
+        document.getElementById('x').value = ''
+        document.getElementById('y').value = ''
+    }
+
+    bagi = function (){
+        x = document.getElementById('x').value
+        y = document.getElementById('y').value
+        document.getElementById('hasil').innerHTML = x/y
+        document.getElementById('x').value = ''
+        document.getElementById('y').value = ''
+    }
+
+    tambah = function (){
+        x = document.getElementById('x').value
+        y = document.getElementById('y').value
+        document.getElementById('hasil').innerHTML = x+y
+        document.getElementById('x').value = ''
+        document.getElementById('y').value = ''
+    }
+
+    kurang = function (){
+        x = document.getElementById('x').value
+        y = document.getElementById('y').value
+        document.getElementById('hasil').innerHTML = x-y
+        document.getElementById('x').value = ''
+        document.getElementById('y').value = ''
+    }
+
+    mod = function (){
+        x = document.getElementById('x').value
+        y = document.getElementById('y').value
+        document.getElementById('hasil').innerHTML = x%y
+        document.getElementById('x').value = ''
+        document.getElementById('y').value = ''
+    }
+
+    pangkat = function (){
+        x = document.getElementById('x').value
+        y = document.getElementById('y').value
+        document.getElementById('hasil').innerHTML = Math.pow(x,y)
+        document.getElementById('x').value = ''
+        document.getElementById('y').value = ''
+    }
+
+    bersihkan = function(){
+        document.getElementById('hasil').innerHTML = 'Hasil'
+    }
+    </script>
+</html>
